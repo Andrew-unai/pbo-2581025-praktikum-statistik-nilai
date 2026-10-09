@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class StatikNilai {
@@ -66,11 +67,41 @@ public class StatikNilai {
             }
         }
 
+        int[] jumlahGrade = new int[5];
+        for (int n : daftar) {
+            if (n >= 90) {
+                jumlahGrade[0]++;
+            } else if (n >= 80) {
+                jumlahGrade[1]++;
+            } else if (n >= 70) {
+                jumlahGrade[2]++;
+            } else if (n >= 60) {
+                jumlahGrade[3]++;
+            } else {
+                jumlahGrade[4]++;
+            }
+        }
+
+        ArrayList<Integer> terurut = new ArrayList<>(daftar);
+        Collections.sort(terurut);
+
         System.out.println("Nilai tersimpan : " + daftar);
         System.out.println("Jumlah          : " + daftar.size());
         System.out.printf("Rata-rata       : %.2f%n", rataRata);
         System.out.println("Tertinggi       : " + tertinggi);
         System.out.println("Terendah        : " + terendah);
         System.out.println("Di atas rata2   : " + diAtas + " orang");
+
+        System.out.print("Distribusi      : ");
+        for (int i = 0; i < jumlahGrade.length; i++) {
+            System.out.print((char) ('A' + i) + "=" + jumlahGrade[i]);
+            if (i < jumlahGrade.length - 1) {
+                System.out.print(" ");
+            }
+        }
+        System.out.println();
+
+        System.out.println("Terurut         : " + terurut);
+        System.out.println("Urutan asli     : " + daftar);
     }
 }
